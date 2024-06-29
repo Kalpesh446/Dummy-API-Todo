@@ -74,47 +74,58 @@ export const ShowData = () => {
     <>
       <h1>show data</h1>
 
-      <ul>
-        {todos?.map((todo) => (
-          <li key={todo.id}>
-            <p>
-              <strong>Todo:</strong> {todo.todo}
-            </p>
-            <p>
-              <strong>Completed:</strong> {todo.completed ? "Yes" : "No"}
-            </p>
-            <p>
-              <strong>User ID:</strong> {todo.userId}
-            </p>
-          </li>
-        ))}
-      </ul>
+      <div className="container mt-5">
+        <h1 className="text-center mb-4">Show Data</h1>
 
-      {/* <!-- Button trigger modal --> */}
-      <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Launch demo modal
-      </button>
+        <ul className="list-group mb-4">
+          {todos?.map((todo) => (
+            <li key={todo.id} className="list-group-item">
+              <p>
+                <strong>Todo:</strong> {todo.todo}
+              </p>
+              <p>
+                <strong>Completed:</strong> {todo.completed ? "Yes" : "No"}
+              </p>
+              <p>
+                <strong>User ID:</strong> {todo.userId}
+              </p>
+            </li>
+          ))}
+        </ul>
 
-      {/* <!-- Modal --> */}
-      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header justify-content-center">
-              <Form className="w-100">
-                <Form.Group className="mb-3" controlId="formBasicTodo">
-                  <Form.Label>Todo</Form.Label>
-                  <Form.Control type="text" placeholder="Enter Todo" value={newTodo.todo} name="todo" onChange={HandleChange} />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicBoolean">
-                  <Form.Label>Completed ?</Form.Label>
-                  <Form.Check type="checkbox" label="True" checked={newTodo.Completed} name="Completed" onChange={HandleChange} />
-                </Form.Group>
-              </Form>
-            </div>
-            <div className="modal-footer justify-content-center">
-              <Button data-bs-dismiss="modal" onClick={HandleAddTodo} variant="primary" type="submit">
-                Add Todos
-              </Button>
+        <div className="text-center">
+          <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Launch demo modal
+          </button>
+        </div>
+
+        {/* Modal */}
+        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Add New Todo
+                </h5>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div className="modal-body">
+                <Form>
+                  <Form.Group className="mb-3" controlId="formBasicTodo">
+                    <Form.Label>Todo</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Todo" value={newTodo.todo} name="todo" onChange={HandleChange} />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicBoolean">
+                    <Form.Label>Completed?</Form.Label>
+                    <Form.Check type="checkbox" label="True" checked={newTodo.completed} name="completed" onChange={HandleChange} />
+                  </Form.Group>
+                </Form>
+              </div>
+              <div className="modal-footer">
+                <Button data-bs-dismiss="modal" onClick={HandleAddTodo} variant="primary" type="submit">
+                  Add Todo
+                </Button>
+              </div>
             </div>
           </div>
         </div>
