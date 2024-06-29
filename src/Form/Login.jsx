@@ -11,7 +11,7 @@ const Login = () => {
 
   console.log(loginData);
 
-  const handlesubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post("https://dummyjson.com/user/login", {
@@ -43,19 +43,26 @@ const Login = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-center">
-        <form action="" className="mt-3">
-          <label htmlFor="">UserName</label>
-          <input type="text" name="userName" id="userName" value={loginData.userName} onChange={handleInputChange} />
-          <br />
-          <br />
-          <label htmlFor="">Password</label>
-          <input type="password" name="password" id="password" value={loginData.password} onChange={handleInputChange} />
-          <br />
-          <br />
-          <button className="btn btn-primary" type="submit" onClick={handlesubmit}>
-            Submit
-          </button>
+      <div className="d-flex justify-content-center align-items-center vh-100" style={{ backgroundColor: "#f8f9fa" }}>
+        <form action="" className="p-4 border rounded shadow-sm w-50" style={{ backgroundColor: "#ffffff" }}>
+          <h2 className="text-center mb-4">Login</h2>
+          <div className="form-group mb-3">
+            <label htmlFor="userName" className="form-label">
+              Username
+            </label>
+            <input type="text" name="userName" id="userName" value={loginData.userName} onChange={handleInputChange} className="form-control" />
+          </div>
+          <div className="form-group mb-4">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input type="password" name="password" id="password" value={loginData.password} onChange={handleInputChange} className="form-control" />
+          </div>
+          <div className="text-center">
+            <button className="btn btn-primary" type="submit" onClick={handleSubmit}>
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </>
